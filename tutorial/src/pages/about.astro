@@ -1,7 +1,6 @@
 ---
     import '../styles/global.css';
-    import Navigation from '../components/Navigation.astro';
-    import Footer from '../components/Footer.astro';
+    import BaseLayout from '../layouts/BaseLayout.astro';
     const pageTitle = "About Me"
     
     const identity = {
@@ -31,10 +30,7 @@
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
         <style define:vars={{skillColor, fontWeight, textCase}}>
-            h1 {
-                color: purple;
-                font-size: 4rem;
-            }
+            
             .skill {
                 color: var(--skillColor);
                 font-weight: var(--fontWeight);
@@ -43,7 +39,7 @@
         </style>
 	</head>
 	<body>
-    <Navigation/>
+        <BaseLayout>
     <h1>{pageTitle}</h1>
     <h2>... and my new Astro site!</h2>
 
@@ -69,6 +65,9 @@
 {finished && <p>I finished this tutorial!</p>}
 
 {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
-    <Footer/>
+    <script>
+        import "../scripts/menu.js";
+      </script>
+      </BaseLayout>
     </body>
 </html>
